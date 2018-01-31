@@ -24,8 +24,8 @@ public class Dao {
 	static ThreadLocal<Connection> local = new ThreadLocal<Connection>();
 
 	/**
-	 * »ñµÃÁ¬½Ó
-	 * 
+	 * è·å¾—è¿æ¥
+	 *aaa
 	 * @return
 	 */
 	public static Connection get() {
@@ -36,7 +36,7 @@ public class Dao {
 	}
 
 	/**
-	 * ¹Ø±Õ
+	 * å…³é—­
 	 * @return
 	 */
 	public static void close() {
@@ -48,14 +48,14 @@ public class Dao {
 			} finally {
 				local.remove();
 			}
-			System.out.println("¹Ø±ÕÁ¬½Ó");
+			System.out.println("å…³é—­è¿æ¥");
 		}
 	}
 
 	public static void begin() {
 		try {
 			get().setAutoCommit(false);
-			System.out.println("¿ªÊ¼ÊÂÎñ");
+			System.out.println("å¼€å§‹äº‹åŠ¡");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,7 +64,7 @@ public class Dao {
 	public static void commit() {
 		try {
 			get().commit();
-			System.out.println("Ìá½»ÊÂÎñ");
+			System.out.println("æäº¤äº‹åŠ¡");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,10 +74,10 @@ public class Dao {
 	public static void rollback() {
 		try {
 			get().rollback();
-			System.out.println("»ØÍËÊÂÎñ");
+			System.out.println("å›é€€äº‹åŠ¡");
 		} catch (SQLException e) {	
 			e.printStackTrace();
-			throw new RuntimeException("»ØÍËÊ§°Ü");
+			throw new RuntimeException("å›é€€å¤±è´¥");
 		}
 	}
 
@@ -112,7 +112,7 @@ public class Dao {
 	}
 
 	/**
-	 * Ö´ĞĞ·Ç²éÑ¯Óï¾ä
+	 * æ‰§è¡ŒéæŸ¥è¯¢è¯­å¥
 	 * 
 	 * @param sql
 	 * @param params
@@ -125,13 +125,13 @@ public class Dao {
 			run.update(conn, sql, params);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("sqlÖ´ĞĞÊ§°Ü");			
+			throw new RuntimeException("sqlæ‰§è¡Œå¤±è´¥");			
 		}
 
 	}
 
 	/**
-	 * Ö´ĞĞÈÎºÎsql£¬²ÎÊıÊ¹ÓÃÊı×é
+	 * æ‰§è¡Œä»»ä½•sqlï¼Œå‚æ•°ä½¿ç”¨æ•°ç»„
 	 * 
 	 * @param sql
 	 * @param params
@@ -145,16 +145,16 @@ public class Dao {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			throw new RuntimeException("sqlÖ´ĞĞÊ§°Ü");
+			throw new RuntimeException("sqlæ‰§è¡Œå¤±è´¥");
 		}
 	}
 
 	/**
-	 * ¸ù¾İ²éÑ¯Óï¾äºÍÀàĞÍÃû³Æ£¬»ñµÃ¶ÔÓ¦µÄ¶ÔÏó¼¯ºÏ£»
+	 * æ ¹æ®æŸ¥è¯¢è¯­å¥å’Œç±»å‹åç§°ï¼Œè·å¾—å¯¹åº”çš„å¯¹è±¡é›†åˆï¼›
 	 * 
 	 * @param sql
 	 * @param clazz
-	 *            ;¼¯ºÏÖĞµÄÀàĞÍ
+	 *            ;é›†åˆä¸­çš„ç±»å‹
 	 * @param params
 	 * @return
 	 * @throws SQLException 
@@ -169,16 +169,16 @@ public class Dao {
 			p = run.query(conn, sql, h, params);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("sqlÖ´ĞĞÊ§°Ü");
+			throw new RuntimeException("sqlæ‰§è¡Œå¤±è´¥");
 		}
 		return p;
 	}
 
 	/**
-	 * »ñµÃÎ¨Ò»µÄÒ»Ìõ¼ÇÂ¼
+	 * è·å¾—å”¯ä¸€çš„ä¸€æ¡è®°å½•
 	 * 
 	 * @param sql
-	 * @param clazz£¬·µ»ØµÄÀàĞÍ
+	 * @param clazzï¼Œè¿”å›çš„ç±»å‹
 	 * @param params
 	 * @return
 	 * @throws SQLException 
@@ -199,7 +199,7 @@ public class Dao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new RuntimeException("sqlÖ´ĞĞÊ§°Ü");
+			throw new RuntimeException("sqlæ‰§è¡Œå¤±è´¥");
 		}
 		if (list == null || list.isEmpty()) {
 			return null;
@@ -236,7 +236,7 @@ public class Dao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new RuntimeException("sqlÖ´ĞĞÊ§°Ü");
+			throw new RuntimeException("sqlæ‰§è¡Œå¤±è´¥");
 		}
 		return result;
 	}
